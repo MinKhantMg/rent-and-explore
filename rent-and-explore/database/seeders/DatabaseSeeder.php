@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Car::factory()->count(4)->create();
+        //Car::factory()->count(10)->create();
     }
 }

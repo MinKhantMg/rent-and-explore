@@ -13,6 +13,9 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <!--fontawesome kit -->
+    <script src="https://kit.fontawesome.com/70b68b584c.js" crossorigin="anonymous"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -21,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <i class="fa-solid fa-car-side me-2"></i>{{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,6 +36,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href='{{ url("/cars/add") }}'>
                                 Add Car
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='{{ url("/cars/show") }}'>
+                                Car
                             </a>
                         </li>
                     </ul>

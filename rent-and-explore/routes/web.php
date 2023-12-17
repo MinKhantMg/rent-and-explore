@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CarController;
+use App\Http\Controllers\Car\CarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/cars', [CarController::class, 'index']);
 Route::get('/cars/detail/{id}', [CarController::class, 'detail']);
 
-
-
+Route::get('/cars/add', [CarController::class, 'add']);
+Route::post('/cars/add' ,[CarController::class, 'create']);
 
 
 
