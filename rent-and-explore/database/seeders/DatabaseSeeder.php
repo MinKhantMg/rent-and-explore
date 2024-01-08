@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Car;
+
+use App\Models\Review;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //Car::factory()->count(10)->create();
+        //Review::factory()->count(10)->create();
+
+        User::factory()->create([
+            "name" => "admin",
+            "email" => "admin@gmail.com",
+        ]);
+
     }
 }

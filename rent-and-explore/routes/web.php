@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Car\CarController;
+use App\Http\Controllers\Car\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +22,15 @@ Route::get('/cars/detail/{id}', [CarController::class, 'detail']);
 Route::get('/cars/add', [CarController::class, 'add']);
 Route::post('/cars/add' ,[CarController::class, 'create']);
 
+Route::get('/reviews/delete/{id}', [ReviewController::class, 'delete']);
+Route::post('/reviews/add', [ReviewController::class, 'create']);
 
+Route::get('/cars/show', [CarController::class, 'show']);
 
+Route::get('/cars/delete/{id}', [CarController::class, 'delete']);
 
+Route::get('/cars/edit/{id}', [CarController::class, 'edit']);
+Route::post('/cars/edit/{id}', [CarController::class, 'update']);
 
 Route::get('/', [CarController::class, 'index'] );
 

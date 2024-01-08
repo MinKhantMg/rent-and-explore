@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container text-center">
+    <div class="container ">
 
         <nav style="--bs-breadcrumb-divider: '->';" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -86,7 +86,7 @@
 
             <div class="col-lg-6 col-md-12 col-sm-12 ">
 
-                <div class="my-3 ">
+                <div class="my-3 text-center">
                     <h3>${{ $car->price }}/day</h3>
                 </div>
 
@@ -125,7 +125,7 @@
 
         <hr>
 
-        <div class="row ">
+        <div class="row text-center">
             <h5 class="fw-bold">DESCRIPTION</h5>
             <p class="text-start lh-sm ">
                {{ $car->description }}
@@ -134,6 +134,34 @@
 
         <hr>
 
+        <ul class="list-group mb-2">
+            <li class="list-group-item active">
+                <b>Comments ({{ count($car->reviews) }})</b>
+            </li>
+            @foreach($car->reviews as $review)
+                <li class="list-group-item">
+                    @can('delete-review', $review)
+                        <a href="{{ url("/reviews/delete/$review->id") }}"
+                            class="btn-close float-end">
+                        </a>
+                    @endcan
+                    <div class="small mt-2 ">
+                        <b class="text-secondary">{{ $review->user->name }}</b>
+                        {{ $review->created_at->diffForHumans() }}
+                    </div>
+                    {{ $review->review_feedback }}
+                </li>
+            @endforeach
+        </ul>
+
+        @auth
+            <form action="{{ url("/reviews/add") }}" method="post">
+                  @csrf
+                  <input type="hidden" name="car_id" value="{{ $car->id }}">
+                  <textarea name="review_feedback" class="form-control my-2"></textarea>
+                  <button class="btn btn-secondary">Add Comment</button>
+              </form>
+        @endauth
 
     </div>
-@endsection
+    @endsection

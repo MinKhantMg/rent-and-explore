@@ -8,7 +8,7 @@
         <div id="carouselExampleInterval" class="carousel slide mb-3" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="{{ asset('/storage/images/car2.jpg') }}" class="d-block w-100" style="height: 400px" alt="...">
+                    <img src="{{ asset('/storage/images/toyota-corolla.svg') }}" class="d-block w-100" style="height: 400px" alt="...">
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
                     <img src="{{ asset('/storage/images/car2.jpg') }}" class="d-block w-100" style="height: 400px" alt="...">

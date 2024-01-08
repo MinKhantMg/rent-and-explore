@@ -32,18 +32,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href='{{ url("/cars/add") }}'>
-                                Add Car
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href='{{ url("/cars/show") }}'>
-                                Car
-                            </a>
-                        </li>
-                    </ul>
+
+                    @if (Auth::user() && Auth::user()->name == 'admin')
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href='{{ url("/cars/add") }}'>
+                                    Add Car
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='{{ url("/cars/show") }}'>
+                                    Car
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -84,7 +87,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 min-vh-100">
             @yield('content')
         </main>
 
