@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('seat');
             $table->integer('MPG');
             $table->integer('price');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

@@ -3,6 +3,18 @@
 
 @section('content')
     <div class="container">
+
+        @if (session('info'))
+            <div class="alert alert-info" id="info">
+                {{ session('info') }}
+            </div>
+            <script>
+                setTimeout(function() {
+                    document.getElementById('info').style.display = 'none';
+                }, 3000);
+            </script>
+        @endif
+
         <h1>Looking for a vehicle? You’re at the right place.</h1>
 
         <div id="carouselExampleInterval" class="carousel slide mb-3" data-bs-ride="carousel">

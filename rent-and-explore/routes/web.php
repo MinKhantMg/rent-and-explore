@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Car\CarController;
 use App\Http\Controllers\Car\ReviewController;
+use App\Http\Controllers\Car\BookController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,8 @@ Route::get('/cars/delete/{id}', [CarController::class, 'delete']);
 
 Route::get('/cars/edit/{id}', [CarController::class, 'edit']);
 Route::post('/cars/edit/{id}', [CarController::class, 'update']);
+
+Route::post('cars/book/{id}', [BookController::class, 'book']);
 
 Route::get('/', [CarController::class, 'index'] );
 

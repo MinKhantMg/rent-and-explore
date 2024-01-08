@@ -90,36 +90,43 @@
                     <h3>${{ $car->price }}/day</h3>
                 </div>
 
-               <div class="card">
-                   <div class="card-body ">
-                       <form>
-                               <strong>Pick up & Return location</strong>
-                               <div class="input-group">
-                                   <input type="text" class="form-control " placeholder="Pick up location">
-                                   <input type="text" class="form-control" placeholder="Return location">
-                               </div>
+                <form method="POST" action="{{ url("/cars/book/$car->id") }}">
+                    @csrf
+                    <div class="card">
+                        <div class="card-body ">
 
-                               <strong>Pick up date & time</strong>
-                               <div class="input-group">
-                                   <input type="date" class="form-control">
-                                   <input type="time" class="form-control">
-                               </div>
+                            <strong>Pick up & Return location</strong>
+                            <div class="input-group">
+                                <input type="text" class="form-control " placeholder="Pick up location"
+                                       name="pickup_location">
+                                <input type="text" class="form-control" placeholder="Return location"
+                                       name="return_location">
+                            </div>
 
-                               <strong>Return date & time</strong>
-                               <div class="input-group">
-                                   <input type="date" class="form-control">
-                                   <input type="time" class="form-control">
-                               </div>
+                            <strong>Pick up date & time</strong>
+                            <div class="input-group">
+                                <input type="date" class="form-control" name="pickup_date">
+                                <input type="time" class="form-control" name="pickup_time">
+                            </div>
 
-                               <a href="">
-                                   <button class="btn btn-secondary form-control mt-2">
-                                       Book
-                                   </button>
-                               </a>
+                            <strong>Return date & time</strong>
+                            <div class="input-group">
+                                <input type="date" class="form-control" name="return_date">
+                                <input type="time" class="form-control" name="return_time">
+                            </div>
 
-                       </form>
-                   </div>
-               </div>
+                            @if ($car->status)
+                                <button class="btn btn-secondary form-control mt-2" type="submit">
+                                    Book
+                                </button>
+                            @else
+                                <button class="btn btn-secondary form-control mt-2" type="submit" disabled>
+                                    Book
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 

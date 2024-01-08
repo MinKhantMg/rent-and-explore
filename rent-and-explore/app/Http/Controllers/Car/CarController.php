@@ -69,7 +69,6 @@ class CarController extends Controller
         $car->seat = request()->seat;
         $car->MPG = request()-> MPG;
         $car->price = request()->price;
-        $car->user_id = auth()->user()->id;
         if(request()->hasFile('photo')){
             $originalName=request()->file('photo')->getClientOriginalName();
             $imgPath=request()->file('photo')->storeAs('public/images/cars',$originalName);
@@ -113,7 +112,6 @@ class CarController extends Controller
         $car->seat = request()->seat;
         $car->MPG = request()-> MPG;
         $car->price = request()->price;
-        $car->user_id = auth()->user()->id;
         if(request()->hasFile('photo')){
             $originalName=request()->file('photo')->getClientOriginalName();
             $imgPath=request()->file('photo')->storeAs('public/images/cars',$originalName);
