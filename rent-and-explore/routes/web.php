@@ -35,8 +35,13 @@ Route::post('/cars/edit/{id}', [CarController::class, 'update']);
 
 Route::post('cars/book/{id}', [BookController::class, 'book']);
 
+Route::get('cars/book/show', [BookController::class, 'show']);
+Route::get('cars/book/decline/{id}', [BookController::class, 'decline']);
+Route::get('cars/book/approve/{id}', [BookController::class, 'approve']);
+
 Route::get('/', [CarController::class, 'index'] );
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

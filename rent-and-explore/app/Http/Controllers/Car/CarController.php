@@ -62,19 +62,7 @@ class CarController extends Controller
         }
 
         $car = new Car();
-        $car->name = request()->name;
-        $car->description = request()->description;
-        $car->door = request()->door;
-        $car->gas = request()->gas;
-        $car->seat = request()->seat;
-        $car->MPG = request()-> MPG;
-        $car->price = request()->price;
-        if(request()->hasFile('photo')){
-            $originalName=request()->file('photo')->getClientOriginalName();
-            $imgPath=request()->file('photo')->storeAs('public/images/cars',$originalName);
-            $car->photo = $imgPath;
-        }
-        $car->save();
+        $this->extracted($car);
 
         return redirect('/cars');
     }
@@ -105,19 +93,7 @@ class CarController extends Controller
         }
 
         $car = Car::find($id);
-        $car->name = request()->name;
-        $car->description = request()->description;
-        $car->door = request()->door;
-        $car->gas = request()->gas;
-        $car->seat = request()->seat;
-        $car->MPG = request()-> MPG;
-        $car->price = request()->price;
-        if(request()->hasFile('photo')){
-            $originalName=request()->file('photo')->getClientOriginalName();
-            $imgPath=request()->file('photo')->storeAs('public/images/cars',$originalName);
-            $car->photo = $imgPath;
-        }
-        $car->save();
+        $this->extracted($car);
 
         return redirect("/cars/show");
     }
@@ -132,5 +108,27 @@ class CarController extends Controller
         }
 
         return back()->with('info', 'Unauthorized');
+    }
+
+    /**
+     * @param $car
+     * @return void
+     */
+    public function extracted($car): void
+    {
+        $car->name = request()->name;
+        $car->description = request()->description;
+        $car->door = request()->door;
+        $car->gas = request()->gas;
+        $car->seat = request()->seat;
+        $car->MPG = request()->MPG;
+        $car->price = request()->price;
+        $car->user_id = auth()->user()->id;
+        if (request()->hasFile('photo')) {
+            $originalName = request()->file('photo')->getClientOriginalName();
+            $imgPath = request()->file('photo')->storeAs('public/images/cars', $originalName);
+            $car->photo = $imgPath;
+        }
+        $car->save();
     }
 }

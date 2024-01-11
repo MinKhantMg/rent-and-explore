@@ -12,7 +12,7 @@
         </nav>
 
         <div class="mb-5">
-            <img src="{{ asset('/storage/images/cars/'. basename($car->photo)) }}" class="img-thumbnail">
+            <img src="{{ asset('/storage/images/cars/'. basename($car->photo)) }}" class="img-thumbnail w-100">
         </div>
 
         <div class="row justify-content-between mb-5">
@@ -98,32 +98,35 @@
                             <strong>Pick up & Return location</strong>
                             <div class="input-group">
                                 <input type="text" class="form-control " placeholder="Pick up location"
-                                       name="pickup_location">
+                                       name="pickup_location" required>
                                 <input type="text" class="form-control" placeholder="Return location"
-                                       name="return_location">
+                                       name="return_location" required>
                             </div>
 
                             <strong>Pick up date & time</strong>
                             <div class="input-group">
-                                <input type="date" class="form-control" name="pickup_date">
-                                <input type="time" class="form-control" name="pickup_time">
+                                <input type="date" class="form-control" name="pickup_date" required>
+                                <input type="time" class="form-control" name="pickup_time" required>
                             </div>
 
                             <strong>Return date & time</strong>
                             <div class="input-group">
-                                <input type="date" class="form-control" name="return_date">
-                                <input type="time" class="form-control" name="return_time">
+                                <input type="date" class="form-control" name="return_date" required>
+                                <input type="time" class="form-control" name="return_time" required>
                             </div>
 
-                            @if ($car->status)
-                                <button class="btn btn-secondary form-control mt-2" type="submit">
-                                    Book
-                                </button>
-                            @else
-                                <button class="btn btn-secondary form-control mt-2" type="submit" disabled>
-                                    Book
-                                </button>
-                            @endif
+                            @auth
+                                @if ($car->status)
+                                    <button class="btn btn-secondary form-control mt-2" type="submit">
+                                        Book
+                                    </button>
+                                @else
+                                    <button class="btn btn-secondary form-control mt-2" type="submit" disabled>
+                                        Book
+                                    </button>
+                                @endif
+                            @endauth
+                            
                         </div>
                     </div>
                 </form>

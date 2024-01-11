@@ -27,8 +27,8 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $car->user_id;
         });
 
-        Gate::define('delete-review', function($user, $comment) {
-            return $user->id == $comment->user_id;
+        Gate::define('delete-review', function($user, $review) {
+            return $user->id == $review->user_id;
         });
     }
 }

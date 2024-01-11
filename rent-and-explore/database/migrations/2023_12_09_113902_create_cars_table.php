@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('MPG');
             $table->integer('price');
             $table->boolean('status')->default(true);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

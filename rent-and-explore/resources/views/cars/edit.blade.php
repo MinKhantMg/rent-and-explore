@@ -18,7 +18,7 @@
                         @csrf
                         <input type="text" class="form-control mb-2" name="name" placeholder="Title" value="{{ $car->name }}">
                         <textarea name="description" placeholder="Body" class="form-control mb-2">{{ $car->description }}</textarea>
-                        <input type="file" class="form-control mb-2" name="photo" placeholder="Photo">
+                        <input type="file" class="form-control mb-2" name="photo" placeholder="Photo" required>
                         <input type="number" class="form-control mb-2" name="door" placeholder="Doors" value="{{ $car->door }}">
                         <input type="number" class="form-control mb-2" name="gas" placeholder="Gas" value="{{ $car->gas }}">
                         <input type="number" class="form-control mb-2" name="seat" placeholder="Seat" value="{{ $car->seat }}">

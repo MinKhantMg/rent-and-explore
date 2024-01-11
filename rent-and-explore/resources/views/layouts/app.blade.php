@@ -45,6 +45,11 @@
                                     Car
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='{{ url("/cars/book/show") }}'>
+                                    Book
+                                </a>
+                            </li>
                         </ul>
                     @endif
 

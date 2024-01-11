@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+
+    public function car()
+    {
+        return $this->belongsTo('App\Models\Car');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo("App\Models\User");
+    }
 }
